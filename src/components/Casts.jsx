@@ -4,7 +4,9 @@ import Cast from './Cast';
 const Casts = ({movieId}) => {
     const [casts, setCasts] = useState([]);
 
-    const castList = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=041b78259461fd4d77cb919edc543a71`
+    const viteEnv = import.meta.env.VITE_API_KEY
+
+    const castList = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${viteEnv}`
 
     const getCasts = async()=>{
         try {
@@ -27,11 +29,10 @@ const Casts = ({movieId}) => {
         <div className=' relative overflow-x-auto'>
             <h3>Casts</h3>
             <ul className=' flex gap-3'>
-                {casts && casts.map(x=>(
-                    <li key={x.id}>
+                {casts && casts.map((x,y)=>(
+                    <li key={y}>
                         <Cast cast={x} />
                     </li>
-
                 ))}
             </ul>
             <hr />

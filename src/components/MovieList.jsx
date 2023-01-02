@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Poster from './Poster';
 
-const MovieList = ({type}) => {
-    const [movies, setMovies] = useState([]);
+//https://vitejs.dev/guide/env-and-mode.html
 
-    const upcomingList = `https://api.themoviedb.org/3/movie/${type}?api_key=041b78259461fd4d77cb919edc543a71`;
+const MovieList = ({type}) => {
+
+    const [movies, setMovies] = useState([]);
+    
+    const viteEnv = import.meta.env.VITE_API_KEY
+   
+    const upcomingList = `https://api.themoviedb.org/3/movie/${type}?api_key=${viteEnv}`;
 
     const getList = async()=>{
         try {

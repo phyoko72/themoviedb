@@ -15,8 +15,6 @@ const Cast = ({cast}) => {
         <div>
             <img className=" max-w-none" width={size} src={imageSrc} alt={cast.original_name} />
             <h2> {cast.name} </h2>
-
-
         </div>
      );
 }
