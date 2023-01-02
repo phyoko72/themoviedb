@@ -1,5 +1,4 @@
 import {useRoutes} from "react-router-dom";
-import Getter from "../Getter";
 import Home from "../Home";
 import Movie from "./Movie";
 
@@ -9,7 +8,6 @@ const Router = () => {
         [
             { path:'/',element: <Home/> },
             { path:'/movie/:movieId', element: <Movie/> },
-            { path:'/getter', element:<Getter/> }
         ]
     )
 

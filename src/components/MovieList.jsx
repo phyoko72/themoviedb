@@ -11,7 +11,7 @@ const MovieList = ({type}) => {
             const res = await fetch(upcomingList)
             const data = await res.json()
             const lists = data.results
-            console.log(lists);
+
             setMovies(lists)
 
         } catch (error) {
@@ -26,12 +26,12 @@ const MovieList = ({type}) => {
 
 
     return ( 
-        <>            
-            <h1 className=' text-lg'>
+        <>        
+            <h1 className=' text-lg capitalize font-bold'>
                 {type}
             </h1>
             <ul className=' flex overflow-x-auto gap-3'>
-                {movies.map(movie=>(
+                {movies && movies.map(movie=>(
                     <li className='p-2' key={movie.id}>
                         <Poster movie={movie}/>
                     </li>

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import Casts from "./Casts";
+import style from "./movie.module.css"
+import Preview from "./Preview";
 
 const Movie = () => {
 
@@ -11,11 +14,8 @@ const Movie = () => {
 
     const getDetail = async()=>{
         try {
-
             const res = await fetch(upcomingList)
             const data = await res.json()
-
-            console.log('Movie Data: ',data);
             setMovie(data)
 
         } catch (error) {
@@ -28,12 +28,33 @@ const Movie = () => {
     },[])
 
     return ( 
-        <>
-            <h1>Movie</h1>
-            <img width={150} className=" max-w-none " src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="image" />
-            <h3>{movie.original_title}</h3>
+        <div className=" bg-orange-400 w-full h-full relative">
 
-        </>
+
+            <div className={style.content}>
+
+                <div className="">
+                    <Link to={'/'} className=" bg-red-600 text-white px-2 py-1 rounded-md mb-2 inline-block">HOME</Link>
+
+                    <img className={style.movie} width={150} src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="image" /> 
+
+                    <h1 className=" text-2xl font-bold font-movie-name mb-2">{movie.original_title}</h1>          
+
+                    <Casts movieId={movieId} />
+                    <Preview movieId={movieId}/>
+                </div>
+     
+            </div>
+
+            <div className={style.bg}>
+                <img className={style.backdrop} width={150}  src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="backdrop" />              
+            </div>
+
+            
+
+            
+
+        </div>
      );
 }
  
